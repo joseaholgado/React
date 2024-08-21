@@ -29,8 +29,16 @@ const Total = ({ total }) => {
   return <p>Number of exercises {total}</p>
 }
 
-
-
+const Display = ( display ) => {
+return <div>{display.counter}</div> 
+}
+const Button = (button) =>{
+  return (
+    <button onClick={button.onClick}>
+      {button.text}
+    </button>
+  )
+}
 const App = () => {
   const [counter, setCounter] = useState(0)
   const increase = () => setCounter(counter + 1)
@@ -52,9 +60,14 @@ const App = () => {
       <Content parts={courseInfo.parts} />
       <Total total={totalExercises} />
       <h3> Hooks</h3>
-      <div>{counter}</div>
-      <button onClick={increase}>Click me</button>
-      <button onClick={decrease}>Zero</button>
+      <Display counter={counter} />
+      <Button 
+      onClick={increase}
+      text='plus'></Button>
+      <Button 
+      onClick={decrease}
+      text='zero'></Button>
+      
     </div>
   )
 }
