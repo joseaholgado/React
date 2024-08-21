@@ -2,7 +2,7 @@
 //Refactor the code so that it consists of three new components: Header, Content, and Total.
 //Exercise 1.3-1.5
 //Refactor the code so that the App component defines the course and its parts as objects.
-
+import React, { useState } from 'react'
 const Header = ({ course }) => {
   return <h1>{course}</h1>
 }
@@ -29,7 +29,12 @@ const Total = ({ total }) => {
   return <p>Number of exercises {total}</p>
 }
 
+
+
 const App = () => {
+  const [counter, setCounter] = useState(0)
+  const increase = () => setCounter(counter + 1)
+  const decrease = () => setCounter(0)
   const courseInfo = {
   name: 'Half Stack application development',
   parts: [
@@ -46,6 +51,10 @@ const App = () => {
       <Header course={courseInfo.name} />
       <Content parts={courseInfo.parts} />
       <Total total={totalExercises} />
+      <h3> Hooks</h3>
+      <div>{counter}</div>
+      <button onClick={increase}>Click me</button>
+      <button onClick={decrease}>Zero</button>
     </div>
   )
 }
